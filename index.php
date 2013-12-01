@@ -50,7 +50,7 @@ $app->post("/login", function() use ($app) {
 		$app->redirect(FIRST_PAGE);
 
 	} else {
-		$app->flash("message", "wrong username or password");
+		// $app->flash("error", "Wrong username or password");
 		$app->redirect(LOGIN_PAGE);
 	}
 });
@@ -67,10 +67,10 @@ $app->get("/page/:page", function($page) use ($app) {
 
 function getDatabase() {
 	$config = include("config.php");
-	$hostname = $config ["hostname"];
-	$dbname = $config ["dbname"];
-	$username = $config ["username"];
-	$password = $config ["password"];
+	$hostname = $config["hostname"];
+	$dbname = $config["dbname"];
+	$username = $config["username"];
+	$password = $config["password"];
 	
 	$pdo = new PDO ( "mysql:host=$hostname;dbname=$dbname", $username, $password );
 	return $pdo;
